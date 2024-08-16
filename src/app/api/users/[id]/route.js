@@ -1,7 +1,5 @@
-//src/app/api/route.js/
 import { Client } from 'pg';
 import dotenv from 'dotenv';
-import bcrypt from 'bcrypt';
 
 dotenv.config();
 const client = new Client({
@@ -17,12 +15,12 @@ export async function GET(request, { params }) {
       //return new Response(JSON.stringify({ message: "GET DATA OK"}), {
       return new Response(JSON.stringify(result.rows), {  
         status: 200,
-        headers: { "Content-Type": "application/json" },
+        headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "application/json" },
       });
     } catch (error) {
       return new Response(JSON.stringify({ error: "Internal Server Error" }), {
         status: 500,
-        headers: { "Content-Type": "application/json" },
+        headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "application/json" },
       });
     }
 }
@@ -48,4 +46,4 @@ export async function DELETE(request, { params }) {
   headers: { 'Content-Type': 'application/json' },
   });
   }
-}//-------------------------------------------------------------------------------------
+  }
